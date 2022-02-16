@@ -25,3 +25,28 @@ bool point::inProximity(float tolerance, point * p) {
     if(dist<tolerance)return true;
     return false;
 }
+
+point::point(string enc) {
+    if(enc[0]=='p' || enc[0]== 'P') fromWKT(enc);
+    else if(enc[0]=='{') fromGeojson(enc);
+    else throw exception();
+}
+
+string point::asWKT() {
+    string wkt = "POINT(";
+    for(float c : coordinates){
+        wkt+= to_string(c) + " ";
+    }
+    wkt +=")";
+    return wkt;
+}
+
+string point::asGeojson() {
+    string geojson =  "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[";
+    for(float c : coordinates){
+        geojson+= to_string(c) + ",";
+    }
+    geojson.substr(0, geojson.size()-1);
+    geojson +="]}}";
+    return geojson;
+}
