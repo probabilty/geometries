@@ -4,7 +4,7 @@
 
 #ifndef POINT_POINTCLOUD_H
 #define POINT_POINTCLOUD_H
-#include "point.h"
+#include "../points/point.h"
 #include <iostream>
 class pointCloud {
 public:

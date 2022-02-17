@@ -9,7 +9,9 @@
 using namespace std;
 class point {
 public:
+    string id;
     point(vector<float> &coords);
+    point(vector<float> &coords, string id);
     //geojson or wkt
     point(string enc);
     float distance(point * p2);

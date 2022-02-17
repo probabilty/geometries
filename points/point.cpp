@@ -12,8 +12,8 @@ float point::distance(point *p2) {
     double sum = 0;
     for (int i = 0 ; i<coordinates.size();i++) {
       sum += pow(abs(coordinates[i]-p2->coordinates[i]),2);
-        return sqrt(sum);
     }
+    return sqrt(sum);
 }
 
 point::point(vector<float> &coords) {
@@ -49,4 +49,9 @@ string point::asGeojson() {
     geojson.substr(0, geojson.size()-1);
     geojson +="]}}";
     return geojson;
+}
+
+point::point(vector<float> &coords, string id) {
+    coordinates = coords;
+    this->id = id;
 }
